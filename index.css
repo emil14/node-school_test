@@ -1,5 +1,11 @@
 .form {
+  font-family: monospace;
 }
+
+  .form__label {
+    display: block;
+    margin-bottom: 10px;
+  }
 
   .form__input {
   }
@@ -7,3 +13,7 @@
     .form__input--error {
       border: 1px solid red;
     }
+
+  .form__button {
+    font-family: monospace;
+  }

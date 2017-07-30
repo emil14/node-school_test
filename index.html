@@ -4,24 +4,29 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+  <title>Emil Valeev. Node.js school</title>
   <link rel="stylesheet" href="index.css">
 </head>
 <body>
-  <form class="form" id="myForm">
-    <label>
+  <form class="form" id="myForm" action="responses/success.json" name="form">
+    <label class="form__label">
       <input class="form__input" type="text" name="fio"> ФИО
     </label>
 
-    <label>
+    <label class="form__label">
       <input class="form__input" type="email" name="email"> Email
     </label>
 
-    <label>
+    <label class="form__label">
       <input class="form__input" type="tel" name="phone"> Телефон
     </label>
 
-    <button id="submitButton" type="submit" name="submit">Отправить</button>
+    <button
+      class="form__button"
+      id="submitButton"
+      type="submit"
+      name="submit"
+    >Отправить</button>
   </form>
 
   <div id="resultContainer"></div>

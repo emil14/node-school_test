@@ -18,5 +18,8 @@
   "homepage": "https://github.com/emil14/yandex-test#readme",
   "devDependencies": {
     "standard": "^10.0.2"
+  },
+  "standard": {
+    "globals": ["FormData"]
   }
 }
