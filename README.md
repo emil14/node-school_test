@@ -1,4 +1,4 @@
-# node-school_test
+# yandex-test
 Test task for admission to Yandex's Node.js school
 
 
