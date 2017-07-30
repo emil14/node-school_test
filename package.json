@@ -1,0 +1,22 @@
+{
+  "name": "yandex-test",
+  "version": "1.0.0",
+  "description": "Test task for admission to Yandex's Node.js school",
+  "main": "index.html",
+  "scripts": {
+    "test": "standard"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/emil14/yandex-test.git"
+  },
+  "author": "Emil Valeev <emil.musician@gmail.com> (https://github.com/emil14)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/emil14/yandex-test/issues"
+  },
+  "homepage": "https://github.com/emil14/yandex-test#readme",
+  "devDependencies": {
+    "standard": "^10.0.2"
+  }
+}
