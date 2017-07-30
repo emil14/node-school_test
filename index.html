@@ -5,25 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
+  <link rel="stylesheet" href="index.css">
 </head>
 <body>
-  <form id="myForm">
-    <label>
-      ФИО
-      <input type="text" name="fio">
+  <form class="form" id="myForm">
+    <label class="form__input">
+      <input type="text" name="fio"> ФИО
     </label>
 
-    <label>
-      Email
-      <input type="email" name="email">
+    <label class="form__input">
+      <input type="email" name="email"> Email
     </label>
 
-    <label>
-      Телефон
-      <input type="tel" name="phone">
+    <label class="form__input">
+      <input type="tel" name="phone"> Телефон
     </label>
 
     <button id="submitButton" type="submit" name="submit">Отправить</button>
   </form>
+
+  <script src="index.js"></script>
 </body>
 </html>
