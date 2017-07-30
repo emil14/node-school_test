@@ -24,7 +24,7 @@ const MyForm = {
 
     // validate number
     const validStart = formData.phone.substring(0, 2) === '+7'
-    const validLength = formData.phone.length === 15
+    const validLength = formData.phone.length === 16
     const validFormat = [
       formData.phone.charAt(2) === '(',
       formData.phone.charAt(6) === ')',
@@ -39,7 +39,9 @@ const MyForm = {
       if (charIsNumber(char)) sum += Number(char)
     }
 
-    if (sum > 30) errorFields.push('phone')
+    if (!validStart || !validLength || validFormat.some(cond => cond === false) || sum > 30) {
+      errorFields.push('phone')
+    }
 
     return {
       isValid: errorFields.length === 0,
