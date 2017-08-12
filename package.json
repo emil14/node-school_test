@@ -20,6 +20,11 @@
     "standard": "^10.0.2"
   },
   "standard": {
-    "globals": ["FormData"]
+    "globals": [
+      "FormData"
+    ]
+  },
+  "dependencies": {
+    "validator": "^8.0.0"
   }
 }
