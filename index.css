@@ -8,10 +8,11 @@
   }
 
   .form__input {
+    border: 1px solid transparent;
   }
 
     .form__input--error {
-      border: 1px solid red;
+      border-color: red;
     }
 
   .form__button {

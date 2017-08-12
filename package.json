@@ -21,8 +21,7 @@
   },
   "standard": {
     "globals": [
-      "FormData",
-      "validator"
+      "FormData"
     ]
   }
 }
