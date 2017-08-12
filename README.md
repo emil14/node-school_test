@@ -1,16 +1,5 @@
 # yandex-test
 > Test task for admission to Yandex's Node.js school.
-> Built with [validator](https://www.npmjs.com/package/validator) JavaScript library.
-
-## Prerequisites
-You'll need `Git`, `Node.js` and `NPM` installed.
-
-## Installing
-```shell
-git clone git@github.com:emil14/yandex-test.git
-cd yandex-test
-npm install --production
-```
 
 ## Tests
 [![JavaScript Style Guide](https://cdn.rawgit.com/standard/standard/master/badge.svg)](https://github.com/standard/standard)

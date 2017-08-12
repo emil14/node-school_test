@@ -21,10 +21,8 @@
   },
   "standard": {
     "globals": [
-      "FormData"
+      "FormData",
+      "validator"
     ]
-  },
-  "dependencies": {
-    "validator": "^8.0.0"
   }
 }

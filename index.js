@@ -2,46 +2,51 @@
 
 const MyForm = {
   validate (formData) {
+    function validateName (name) {
+      return name.split(' ').length === 3 && /\S/.test(name)
+    }
+
+    function validateEmail (email) {
+      const resolvedDomains = [
+        'ya.ru', 'yandex.ru', 'yandex.ua',
+        'yandex.by', 'yandex.kz', 'yandex.com'
+      ]
+      const atPosition = email.indexOf('@')
+      const domain = email.substring(atPosition + 1)
+      const address = email.substring(0, atPosition)
+      const isResolvedDomain = resolvedDomains.includes(domain)
+      const hasAddress = address.length !== 0
+      const hasAtSign = atPosition !== -1
+      const isValidEmail = hasAddress && hasAtSign
+
+      return isValidEmail && isResolvedDomain
+    }
+
+    function validatePhone (phone) {
+      const validStart = phone.substring(0, 2) === '+7'
+      const validLength = phone.length === 16
+      const validFormat = [
+        phone.charAt(2) === '(',
+        phone.charAt(6) === ')',
+        phone.charAt(10) === '-',
+        phone.charAt(13) === '-'
+      ]
+
+      let sum = 0
+      const charIsNumber = char => !isNaN(char)
+
+      for (const char of phone) {
+        if (charIsNumber(char)) sum += Number(char)
+      }
+
+      return validStart && validLength && validFormat.every(cond => cond === true) && sum > 30
+    }
+
     const errorFields = []
 
-    // validate name
-    // FIXME user can send just spaces
-    if (formData.fio.split(' ').length !== 3) errorFields.push('fio')
-
-    // validate email
-    const atPosition = formData.email.indexOf('@')
-    const domain = formData.email.substring(atPosition + 1)
-    const address = formData.email.substring(0, atPosition)
-    const resolvedDomains = [
-      'ya.ru', 'yandex.ru', 'yandex.ua',
-      'yandex.by', 'yandex.kz', 'yandex.com'
-    ]
-    const domainIsValid = resolvedDomains.includes(domain)
-    const hasAddress = address.length !== 0
-    const hasAtSign = atPosition !== -1
-
-    if (!hasAtSign || !hasAddress || !domainIsValid) errorFields.push('email')
-
-    // validate number
-    const validStart = formData.phone.substring(0, 2) === '+7'
-    const validLength = formData.phone.length === 16
-    const validFormat = [
-      formData.phone.charAt(2) === '(',
-      formData.phone.charAt(6) === ')',
-      formData.phone.charAt(10) === '-',
-      formData.phone.charAt(13) === '-'
-    ]
-
-    let sum = 0
-    const charIsNumber = char => !isNaN(char)
-
-    for (const char of formData.phone) {
-      if (charIsNumber(char)) sum += Number(char)
-    }
-
-    if (!validStart || !validLength || validFormat.some(cond => cond === false) || sum > 30) {
-      errorFields.push('phone')
-    }
+    if (!validateName(formData.fio)) errorFields.push('fio')
+    if (!validateEmail(formData.email)) errorFields.push('email')
+    if (!validatePhone(formData.phone)) errorFields.push('phone')
 
     return {
       isValid: errorFields.length === 0,
