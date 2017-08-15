@@ -72,7 +72,10 @@ const MyForm = {
     const formData = MyForm.getData()
     const validationResult = MyForm.validate(formData)
 
-    console.log(validationResult)
+    if (validationResult) {
+      // fetch('./responses/success.json')
+      //   .then(res => { console.log(res.json) })
+    }
   }
 }
 
