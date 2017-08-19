@@ -18,3 +18,19 @@
   .form__button {
     font-family: monospace;
   }
+
+.result-container {
+  border: 1px solid transparent;
+}
+
+  .result-container.progress {
+    border-color: #999;
+  }
+
+  .result-container.success {
+    border-color: red;
+  }
+
+  .result-container.error {
+    border-color: red;
+  }
