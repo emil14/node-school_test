@@ -69,10 +69,7 @@ const MyForm = {
   },
 
   setData (data) {
-    const formData = new FormData(formNode)
-
     for (var input of formNode.elements) {
-
       input.value = data[input.name]
     }
   },
@@ -82,8 +79,8 @@ const MyForm = {
     const validationResult = MyForm.validate(formData)
     const resultContainer = document.getElementById('resultContainer')
 
-    function makeRequest(url) {
-      fetch(url)
+    function makeRequest (url) {
+      window.fetch(url)
         .then(resp => resp.json())
         .then(json => {
           if (json.status === 'success') resultContainer.innerHTML = json.status

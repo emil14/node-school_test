@@ -6,6 +6,7 @@
 git clone https://github.com/emil14/yandex-test
 cd yandex-test
 node server.js
+google-chrome index.html
 ```
 
 ## Tests
