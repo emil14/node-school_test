@@ -1,6 +1,7 @@
 'use strict'
 
 const formNode = document.forms.form
+const submitButton = document.getElementById('submitButton')
 
 const MyForm = {
   validate (formData) {
@@ -69,9 +70,32 @@ const MyForm = {
 
   setData () {},
 
-  submit () {
+  submit() {
     const formData = MyForm.getData()
     const validationResult = MyForm.validate(formData)
+    const resultContainer = document.getElementById('resultContainer')
+
+    function makeRequest(url) {
+      fetch(url)
+        .then(resp => resp.json())
+        .then(json => {
+          if (json.status === 'success') resultContainer.innerHTML = json.status
+
+          if (json.status === 'error') resultContainer.innerHTML = json.reason
+
+          if (json.status === 'progress') {
+            resultContainer.innerHTML = json.reason
+            submitButton.disabled = true
+
+            setTimeout(() => {
+              // makeRequest()
+              submitButton.disabled = false
+            }, json.timeout)
+          }
+
+          resultContainer.classList.add(json.status)
+        })
+    }
 
     for (const field of formNode.elements) {
       const isInvalid = validationResult.errorFields.includes(field.name)
@@ -80,10 +104,10 @@ const MyForm = {
       if (isInvalid && !hasErrorClass) field.classList.add('error')
       else if (!isInvalid && hasErrorClass) field.classList.remove('error')
     }
+
+    if (validationResult.isValid) makeRequest(formNode.action)
   }
 }
-
-const submitButton = document.getElementById('submitButton')
 
 submitButton.onclick = event => {
   event.preventDefault()
