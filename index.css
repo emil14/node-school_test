@@ -1,5 +1,6 @@
 .form {
   font-family: monospace;
+  margin-bottom: 20px;
 }
 
   .form__label {
@@ -8,6 +9,7 @@
   }
 
   .form__input {
+    padding-left: 4px;
     border: 1px solid #999;
   }
 
@@ -20,15 +22,12 @@
   }
 
 .result-container {
-  border: 1px solid transparent;
+  padding: 10px;
+  border-left: 3px solid transparent;
 }
 
-  .result-container.progress {
-    border-color: #999;
-  }
-
   .result-container.success {
-    border-color: red;
+    border-color: green;
   }
 
   .result-container.error {
