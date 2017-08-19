@@ -68,9 +68,16 @@ const MyForm = {
     return resultObj
   },
 
-  setData () {},
+  setData (data) {
+    const formData = new FormData(formNode)
 
-  submit() {
+    for (var input of formNode.elements) {
+
+      input.value = data[input.name]
+    }
+  },
+
+  submit () {
     const formData = MyForm.getData()
     const validationResult = MyForm.validate(formData)
     const resultContainer = document.getElementById('resultContainer')
@@ -84,15 +91,15 @@ const MyForm = {
           if (json.status === 'error') resultContainer.innerHTML = json.reason
 
           if (json.status === 'progress') {
-            resultContainer.innerHTML = json.reason
             submitButton.disabled = true
 
             setTimeout(() => {
-              // makeRequest()
               submitButton.disabled = false
+              makeRequest(url)
             }, json.timeout)
           }
 
+          resultContainer.classList.remove('success', 'error', 'progress')
           resultContainer.classList.add(json.status)
         })
     }
@@ -113,3 +120,9 @@ submitButton.onclick = event => {
   event.preventDefault()
   MyForm.submit()
 }
+
+MyForm.setData({
+  fio: 'F I O',
+  email: 'email@yandex.ru',
+  phone: '+7(123)456-78-90'
+})
