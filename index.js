@@ -1,5 +1,7 @@
 'use strict'
 
+const formNode = document.forms.form
+
 const MyForm = {
   validate (formData) {
     function validateName (name) {
@@ -30,7 +32,7 @@ const MyForm = {
         phone.charAt(6) === ')',
         phone.charAt(10) === '-',
         phone.charAt(13) === '-'
-      ]
+      ].every(cond => cond === true)
 
       let sum = 0
       const charIsNumber = char => !isNaN(char)
@@ -39,7 +41,7 @@ const MyForm = {
         if (charIsNumber(char)) sum += Number(char)
       }
 
-      return validStart && validLength && validFormat.every(cond => cond === true) && sum > 30
+      return validStart && validLength && validFormat && sum > 30
     }
 
     const errorFields = []
@@ -55,7 +57,6 @@ const MyForm = {
   },
 
   getData () {
-    const formNode = document.forms.form
     const formData = new FormData(formNode)
     const resultObj = {}
 
@@ -68,13 +69,16 @@ const MyForm = {
 
   setData () {},
 
-  submit () {
+  submit() {
     const formData = MyForm.getData()
     const validationResult = MyForm.validate(formData)
 
-    if (validationResult) {
-      // fetch('./responses/success.json')
-      //   .then(res => { console.log(res.json) })
+    for (const field of formNode.elements) {
+      const isInvalid = validationResult.errorFields.includes(field.name)
+      const hasErrorClass = field.classList.contains('error')
+
+      if (isInvalid && !hasErrorClass) field.classList.add('error')
+      else if (!isInvalid && hasErrorClass) field.classList.remove('error')
     }
   }
 }
