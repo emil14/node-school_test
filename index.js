@@ -69,7 +69,7 @@ const MyForm = {
 
   setData () {},
 
-  submit() {
+  submit () {
     const formData = MyForm.getData()
     const validationResult = MyForm.validate(formData)
 
