@@ -1,6 +1,13 @@
 # yandex-test
 > Test task for admission to Yandex's Node.js school. :books:
 
+## Usage
+```shell
+git clone https://github.com/emil14/yandex-test
+cd yandex-test
+node server.js
+```
+
 ## Tests
 [![JavaScript Style Guide](https://cdn.rawgit.com/standard/standard/master/badge.svg)](https://github.com/standard/standard)
 
