@@ -42,7 +42,7 @@ const MyForm = {
         if (charIsNumber(char)) sum += Number(char)
       }
 
-      return validStart && validLength && validFormat && sum > 30
+      return validStart && validLength && validFormat && sum < 30
     }
 
     const errorFields = []
@@ -121,5 +121,5 @@ submitButton.onclick = event => {
 MyForm.setData({
   fio: 'F I O',
   email: 'email@yandex.ru',
-  phone: '+7(123)456-78-90'
+  phone: '+7(111)222-33-11'
 })
